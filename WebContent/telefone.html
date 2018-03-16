@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="telefoneModule">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Cadastro de Telefones</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+
+<script src="controller/telefone.js"></script>
+</head>
+<body ng-controller="telefoneController">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+		integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+		crossorigin="anonymous"></script>
+
+	<div ng-include src="'menu.html'"></div>
+
+	<div class="container-fluid">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#home"
+				aria-controls="home" role="tab" data-toggle="tab">Cadastro</a></li>
+			<li role="presentation"><a href="#profile"
+				aria-controls="profile" role="tab" data-toggle="tab">Telefones</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">
+				<br />
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-1 control-label">Código:</label>
+						<div class="col-sm-1">
+							<input type="text" class="form-control"
+								ng-model="novoTelefone.codigo" disabled="false"
+								placeholder="cod.">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label">Nome:</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control"
+								ng-model="novoTelefone.nome" placeholder="Nome">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label">Telefone:</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control"
+								ng-model="novoTelefone.numero" placeholder="Número">
+								<br/>
+								<button type="submit" class="btn btn-primary" ng-click="salvar()">Salvar</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+
+			<div role="tabpanel" class="tab-pane" id="profile">
+				<table class="table table-hover">
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Número</th>
+					<th>Opções</th>
+					<tr ng-repeat="telefone in telefones">
+						<td>{{telefone.codigo}}</td>
+						<td>{{telefone.nome}}</td>
+						<td>{{telefone.numero}}</td>
+						<td>
+							<button type="button" class="btn btn-default"
+								ng-click="excluir(telefone)">Excluir</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
